@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="732.0" prefWidth="1440.0" stylesheets="@Metadata.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newedo.projects.binary.ctrl.MetadataCtrl">
+  <children>
+    <SplitPane dividerPositions="0.2503448275862069, 0.7579310344827587" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <items>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="576.0" prefViewportWidth="222.0">
+               <content>
+              <AnchorPane>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextField fx:id="txt_filterMDs" onAction="#filterMDsAction" promptText="请输入元数据关键字" />
+                              <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="200.0" prefViewportWidth="222.0" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <TreeView fx:id="trv_mds" prefHeight="200.0" prefWidth="200.0">
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                                <MenuItem fx:id="mui_addMD" mnemonicParsing="false" onAction="#addMDAction" text="新增元数据" />
+                                                <MenuItem fx:id="mui_delMD" mnemonicParsing="false" onAction="#delMDAction" text="删除元数据" />
+                                                <MenuItem fx:id="mui_refreshMDs" mnemonicParsing="false" onAction="#refreshMDsAction" text="刷新元数据" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TreeView>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+               </content>
+            </ScrollPane>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="-1.0" prefWidth="-1.0">
+          <content>
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                     <children>
+                        <SplitPane dividerPositions="0.29797979797979796" orientation="VERTICAL" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                                             <items>
+                                                <Button fx:id="btn_addEntity" mnemonicParsing="false" onAction="#addEntityAction" text="新增" />
+                                                <Button fx:id="btn_delEntity" mnemonicParsing="false" onAction="#delEntityAction" text="删除" />
+                                                <Separator orientation="VERTICAL" />
+                                                <Button fx:id="btn_refreshEntities" mnemonicParsing="false" onAction="#refreshEntitiesAction" text="刷新" />
+                                             </items>
+                                          </ToolBar>
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="200.0" prefViewportWidth="443.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView fx:id="tbl_entities" prefHeight="124.0" prefWidth="722.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="tblc_enid" prefWidth="75.0" text="唯一标识" visible="false" />
+                                                      <TableColumn fx:id="tblc_encode" prefWidth="75.0" text="实体编码" />
+                                                      <TableColumn fx:id="tblc_enname" prefWidth="75.0" text="实体名称" />
+                                                      <TableColumn fx:id="tblc_enclassname" prefWidth="200.0" text="完全限定类名" />
+                                                      <TableColumn fx:id="tblc_entablename" prefWidth="100.0" text="表名" />
+                                                      <TableColumn fx:id="tblc_enfields" prefWidth="75.0" text="包含字段集合" visible="false" />
+                                                       <TableColumn fx:id="tblc_encreator" prefWidth="75.0" text="创建人" />
+                                                       <TableColumn fx:id="tblc_encreatedtime" prefWidth="75.0" text="创建时间" />
+                                                       <TableColumn fx:id="tblc_enmodifitime" prefWidth="75.0" text="修改时间" />
+                                                       <TableColumn fx:id="tblc_enmodifier" prefWidth="75.0" text="修改人" />
+                                                       <TableColumn fx:id="tblc_ents" prefWidth="75.0" text="时间戳" visible="false" />
+                                                   </columns>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="440.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <items>
+                                                      <Button fx:id="btn_addField" mnemonicParsing="false" onAction="#addFieldAction" text="新增" />
+                                                      <Button fx:id="btn_delField" mnemonicParsing="false" onAction="#delFieldAction" text="删除" />
+                                                      <Separator orientation="VERTICAL" />
+                                                    <Button fx:id="btn_refreshFields" mnemonicParsing="false" onAction="#refreshFieldsAction" text="刷新" />
+                                                  </items>
+                                                </ToolBar>
+                                                <TextField fx:id="txt_filterFields" layoutX="332.0" layoutY="7.0" onAction="#filterFieldsAction" prefHeight="27.0" prefWidth="246.0" promptText="请输入字段关键字" AnchorPane.rightAnchor="5.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="200.0" prefViewportWidth="443.0" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView fx:id="tbl_fields" prefHeight="200.0" prefWidth="200.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="tblc_fid" prefWidth="75.0" text="唯一标识" visible="false" />
+                                                      <TableColumn fx:id="tblc_fcode" prefWidth="75.0" text="字段编码" />
+                                                      <TableColumn fx:id="tblc_fname" prefWidth="75.0" text="字段名称" />
+                                                      <TableColumn fx:id="tblc_ftype" prefWidth="75.0" text="字段类型" />
+                                                      <TableColumn fx:id="tblc_fisprimarykey" prefWidth="75.0" text="是否主属性" />
+                                                      <TableColumn fx:id="tblc_fisnotnull" prefWidth="75.0" text="是否必输" />
+                                                      <TableColumn fx:id="tblc_fdefaultval" prefWidth="75.0" text="缺省值" />
+                                                      <TableColumn fx:id="tblc_flength" prefWidth="75.0" text="长度" />
+                                                       <TableColumn fx:id="tblc_fminval" prefWidth="75.0" text="最小值" />
+                                                      <TableColumn fx:id="tblc_fmaxval" prefWidth="75.0" text="最大值" />
+                                                       <TableColumn fx:id="tblc_fisactive" prefWidth="75.0" text="是否启用" />
+                                                       <TableColumn fx:id="tblc_fcreatedtime" prefWidth="75.0" text="创建人" />
+                                                       <TableColumn fx:id="tblc_fcreator" prefWidth="75.0" text="创建时间" />
+                                                       <TableColumn fx:id="tblc_fmodifitime" prefWidth="75.0" text="修改时间" />
+                                                       <TableColumn fx:id="tblc_fmodifier" prefWidth="75.0" text="修改人" />
+                                                       <TableColumn fx:id="tblc_fts" prefWidth="75.0" text="时间戳" visible="false" />
+                                                   </columns>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+          </content>
+        </ScrollPane>
+            <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="-Infinity" prefHeight="681.0" prefViewportHeight="576.0" prefViewportWidth="221.0" prefWidth="390.0">
+               <content>
+              <AnchorPane>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextField fx:id="txt_filterPros" onAction="#filterProsAction" promptText="请输入属性关键字" />
+                              <ScrollPane fitToWidth="true" prefViewportHeight="205.0" prefViewportWidth="360.0" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <GridPane fx:id="gp_pros" alignment="CENTER" vgap="5.0" VBox.vgrow="NEVER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="69.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="290.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+               </content>
+            </ScrollPane>
+      </items>
+    </SplitPane>
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>
